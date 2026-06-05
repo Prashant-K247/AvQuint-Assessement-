@@ -10,7 +10,15 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://avquint-assessement.onrender.com/api",
+      "https://av-quint-assessement.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use('/api/auth',authRouter);
 app.use("/api/tasks", taskRoutes);
